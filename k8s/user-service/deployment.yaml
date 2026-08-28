@@ -41,9 +41,9 @@ spec:
           emptyDir: {}
       containers:
         - name: user-service
-          # Images live in the existing ACR (credproj.azurecr.io). AKS is
-          # attached to it via: az aks update --attach-acr credproj
-          image: credproj.azurecr.io/credpay/user-service:latest
+          # Images live in the existing ACR (credpaycr.azurecr.io). AKS is
+          # attached to it via: az aks update --attach-acr credpaycr
+          image: credpaycr.azurecr.io/credpay/user-service:latest
           # "Always" because the tag is the mutable `:latest` - IfNotPresent
           # would let a node keep serving a stale cached image after a fresh
           # push + `kubectl rollout restart`.

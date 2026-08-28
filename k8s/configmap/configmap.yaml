@@ -17,7 +17,7 @@ metadata:
     app.kubernetes.io/part-of: credpay
 data:
   # ---- Shared DB coordinates (consumed by both backends) ----
-  DB_HOST: "psql-credpay.postgres.database.azure.com"
+  DB_HOST: "psql-credpaycr.postgres.database.azure.com"
   DB_PORT: "5432"
   DB_NAME: "credpay"
   DB_USERNAME: "credpayadmin"

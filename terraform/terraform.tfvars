@@ -9,10 +9,10 @@
 # =====================================================================
 
 # Azure Subscription ID
-subscription_id = "eb2e4db4-1889-4351-9b48-102efd8a3a57"
+subscription_id = "3216be10-695a-4fd6-ae65-70140df12a16"
 
 # Azure Region
-location = "canadacentral"
+location = "eastus"
 
 # ----- Networking -----
 vnet_address_space     = "10.0.0.0/16"
@@ -34,5 +34,5 @@ database_name           = "credpay"
 log_retention_days = 30
 
 # ----- Key Vault (created out-of-band, in the CredProj bootstrap RG - see backend.tf) -----
-key_vault_name                = "kv-credpay"
-key_vault_resource_group_name = "CredProj"
+key_vault_name                = "credpaykv3"
+key_vault_resource_group_name = "credpay_rg"
