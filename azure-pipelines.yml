@@ -25,7 +25,7 @@ variables:
 
   # Azure service connections
   acrServiceConnection: 'credpy-acr-sc'
-  azureServiceConnection: 'credpy'
+  azureServiceConnection: 'credpysc'
 
   # ACR resource name (not the service connection name above) - needed for
   # `az aks update --attach-acr`, which takes the registry's own name.
