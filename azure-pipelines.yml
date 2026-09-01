@@ -113,30 +113,30 @@ stages:
 #     # Key Vault coordinates so they stay in sync with the pipeline
 #     # variables the Deploy stage reads secrets back with, below.
 #     #########################################################
-#     - task: TerraformTask@5
-#       displayName: Terraform Apply (infra + push secrets to Key Vault)
-#       inputs:
-#         provider: azurerm
-#         command: apply
-#         workingDirectory: terraform
-#         commandOptions: >-
-#           -auto-approve
-#           -var="key_vault_name=$(keyVaultName)"
-#           -var="key_vault_resource_group_name=$(keyVaultResourceGroup)"
-#         environmentServiceNameAzureRM: $(azureServiceConnection)
+    - task: TerraformTask@5
+      displayName: Terraform Apply (infra + push secrets to Key Vault)
+      inputs:
+        provider: azurerm
+        command: apply
+        workingDirectory: terraform
+        commandOptions: >-
+          -auto-approve
+          -var="key_vault_name=$(keyVaultName)"
+          -var="key_vault_resource_group_name=$(keyVaultResourceGroup)"
+        environmentServiceNameAzureRM: $(azureServiceConnection)
 
-#     #########################################################
-#     # Print the outputs so they're visible in the pipeline log
-#     # (the values themselves are also already hardcoded as
-#     # pipeline variables above - this step is just for visibility).
-#     #########################################################
-#     - task: TerraformTask@5
-#       displayName: Show Terraform Outputs
-#       inputs:
-#         provider: azurerm
-#         command: output
-#         workingDirectory: terraform
-#         environmentServiceNameAzureRM: $(azureServiceConnection)
+    #########################################################
+    # Print the outputs so they're visible in the pipeline log
+    # (the values themselves are also already hardcoded as
+    # pipeline variables above - this step is just for visibility).
+    #########################################################
+    - task: TerraformTask@5
+      displayName: Show Terraform Outputs
+      inputs:
+        provider: azurerm
+        command: output
+        workingDirectory: terraform
+        environmentServiceNameAzureRM: $(azureServiceConnection)
 
 # # =========================================================
 # # STAGE 2 - BUILD & PUSH DOCKER IMAGES
