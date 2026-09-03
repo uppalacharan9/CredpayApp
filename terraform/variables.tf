@@ -67,6 +67,11 @@ variable "postgres_version" {
   default = "16"
 }
 
+variable "sku_name" {
+  type    = string
+  default = "B_Standard_B1ms"
+}
+
 # PostgreSQL admin username
 variable "postgres_admin_username" {
   type    = string
