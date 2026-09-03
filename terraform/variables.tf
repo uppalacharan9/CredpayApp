@@ -64,7 +64,7 @@ variable "vm_size" {
 # PostgreSQL major version
 variable "postgres_version" {
   type    = string
-  default = "18"
+  default = "16"
 }
 
 # PostgreSQL admin username
