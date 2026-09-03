@@ -60,7 +60,7 @@ module "postgres" {
 
   name_prefix         = local.name_prefix
   resource_group_name = module.resource_group.name
-  location            = module.resource_group.location
+  location            = "centralus" # PostgreSQL Flexible Server is not available in eastus, so we deploy it in centralus instead
   admin_username      = var.postgres_admin_username
   database_name       = var.database_name
   postgres_version    = var.postgres_version
