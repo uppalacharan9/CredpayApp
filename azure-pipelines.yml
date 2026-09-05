@@ -143,83 +143,83 @@ stages:
 # # as-is. Runs after Terraform so infra always exists before images do.
 # # =========================================================
 
-# - stage: DockerBuild
-#   displayName: Docker Build & Push
-#   dependsOn: Terraform
+- stage: DockerBuild
+  displayName: Docker Build & Push
+  dependsOn: Terraform
 
-#   jobs:
+  jobs:
 
-#   - job: BuildPushImages
-#     displayName: Build Docker Images
+  - job: BuildPushImages
+    displayName: Build Docker Images
 
-#     steps:
+    steps:
 
-#     - checkout: self
+    - checkout: self
 
 #     #########################################################
 #     # Display Build Information
 #     #########################################################
 
-    # - script: |
-    #     echo "Repository : $(Build.Repository.Name)"
-    #     echo "Branch     : $(Build.SourceBranch)"
-    #     echo "Build ID   : $(Build.BuildId)"
-    #     echo "Image Tag  : $(tag)"
-    #   displayName: Build Information
+    - script: |
+        echo "Repository : $(Build.Repository.Name)"
+        echo "Branch     : $(Build.SourceBranch)"
+        echo "Build ID   : $(Build.BuildId)"
+        echo "Image Tag  : $(tag)"
+      displayName: Build Information
 
 #     #########################################################
 #     # FRONTEND
 #     #########################################################
 
-    # - task: Docker@2
-    #   displayName: Build & Push Frontend Image
+    - task: Docker@2
+      displayName: Build & Push Frontend Image
 
-    #   inputs:
-    #     command: buildAndPush
-    #     containerRegistry: $(acrServiceConnection)
-    #     repository: $(frontendRepository)
-    #     dockerfile: frontend-react/Dockerfile
-    #     buildContext: frontend-react
+      inputs:
+        command: buildAndPush
+        containerRegistry: $(acrServiceConnection)
+        repository: $(frontendRepository)
+        dockerfile: frontend-react/Dockerfile
+        buildContext: frontend-react
 
-    #     tags: |
-    #       $(tag)
-    #       latest
+        tags: |
+          $(tag)
+          latest
 
 #     #########################################################
 #     # USER SERVICE
 #     #########################################################
 
-    # - task: Docker@2
-    #   displayName: Build & Push User Service Image
+    - task: Docker@2
+      displayName: Build & Push User Service Image
 
-    #   inputs:
-    #     command: buildAndPush
-    #     containerRegistry: $(acrServiceConnection)
-    #     repository: $(userRepository)
-    #     dockerfile: user-service/Dockerfile
-    #     buildContext: user-service
+      inputs:
+        command: buildAndPush
+        containerRegistry: $(acrServiceConnection)
+        repository: $(userRepository)
+        dockerfile: user-service/Dockerfile
+        buildContext: user-service
 
-    #     tags: |
-    #       $(tag)
-    #       latest
+        tags: |
+          $(tag)
+          latest
 
 #     #########################################################
 #     # PAYMENT SERVICE
 #     #########################################################
 
-    # - task: Docker@2
-    #   displayName: Build & Push Payment Service Image
+    - task: Docker@2
+      displayName: Build & Push Payment Service Image
 
-    #   inputs:
-    #     command: buildAndPush
-    #     containerRegistry: $(acrServiceConnection)
-    #     repository: $(paymentRepository)
-    #     dockerfile: payment-service/Dockerfile
-    #     buildContext: payment-service
+      inputs:
+        command: buildAndPush
+        containerRegistry: $(acrServiceConnection)
+        repository: $(paymentRepository)
+        dockerfile: payment-service/Dockerfile
+        buildContext: payment-service
 
-    #     tags: |
-    #       $(tag)
-    #       latest
+        tags: |
+          $(tag)
+          latest
 
 # # =========================================================
 # # STAGE 3 - DEPLOY TO AKS
