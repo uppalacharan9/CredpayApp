@@ -23,7 +23,7 @@ pool:
 variables:
 
   # Azure service connections
-  acrServiceConnection: 'credpy-acr-sc'
+  acrServiceConnection: 'credpy-acr-sc1'
   azureServiceConnection: 'credpysc'
 
   # ACR resource name (not the service connection name above) - needed for
