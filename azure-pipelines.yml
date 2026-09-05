@@ -98,13 +98,13 @@ stages:
         backendAzureRmContainerName: $(tfStateContainer)
         backendAzureRmKey: $(tfStateKey)
 
-    # - task: TerraformTask@5
-    #   displayName: Terraform Apply (infra + push secrets to Key Vault)
-    #   inputs:
-    #     provider: azurerm
-    #     command: destroy
-    #     workingDirectory: terraform
-    #     environmentServiceNameAzureRM: $(azureServiceConnection)
+    - task: TerraformTask@5
+      displayName: Terraform Apply (infra + push secrets to Key Vault)
+      inputs:
+        provider: azurerm
+        command: apply
+        workingDirectory: terraform
+        environmentServiceNameAzureRM: $(azureServiceConnection)
     
 #     #########################################################
 #     # Apply infra. subscription_id comes from terraform.tfvars (see the
