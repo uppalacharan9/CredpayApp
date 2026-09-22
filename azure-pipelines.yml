@@ -39,7 +39,7 @@ variables:
   paymentRepository: 'credpay/payment-service'
 
   # Terraform remote state backend
-  tfStateRG: 'credpay_rg'
+  tfStateRG: 'credpay'
   tfStateStorage: 'credpaysa2'
   tfStateContainer: 'statefile'
   tfStateKey: 'credpay.terraform.tfstate'
