@@ -55,7 +55,7 @@ variables:
   # rg-credpay). Terraform writes the Postgres secrets into it; the
   # pipeline reads them back below.
   keyVaultName: 'credpaykv4'
-  keyVaultResourceGroup: 'credpay_rg'
+  keyVaultResourceGroup: 'credpay'
 
 # =========================================================
 # STAGES
