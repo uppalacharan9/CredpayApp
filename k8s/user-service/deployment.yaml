@@ -67,7 +67,7 @@ spec:
             tcpSocket:
               port: http
             # Spring Boot can take a while to start; allow up to 60s.
-            failureThreshold: 20
+            failureThreshold: 40
             periodSeconds: 3
           readinessProbe:
             tcpSocket:
