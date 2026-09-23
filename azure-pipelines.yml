@@ -415,11 +415,20 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           set -e
+                    set -e
+          EXISTED=false
+          if kubectl get deployment/user-service -n $(k8sNamespace) >/dev/null 2>&1; then
+            EXISTED=true
+          fi
+
           kubectl apply -f k8s/user-service/
-          kubectl rollout restart deployment/user-service -n $(k8sNamespace)
+
+          if [ "$EXISTED" = "true" ]; then
+            kubectl rollout restart deployment/user-service -n $(k8sNamespace)
+          fi
+
           kubectl rollout status deployment/user-service -n $(k8sNamespace) --timeout=180s
           kubectl get pods -n $(k8sNamespace) -l app.kubernetes.io/name=user-service
-
 #     #########################################################
 #     # Payment Service - Rolling Update (unchanged strategy)
 #     #########################################################
@@ -431,8 +440,17 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           set -e
+          EXISTED=false
+          if kubectl get deployment/payment-service -n $(k8sNamespace) >/dev/null 2>&1; then
+            EXISTED=true
+          fi
+
           kubectl apply -f k8s/payment-service/
-          kubectl rollout restart deployment/payment-service -n $(k8sNamespace)
+
+          if [ "$EXISTED" = "true" ]; then
+            kubectl rollout restart deployment/payment-service -n $(k8sNamespace)
+          fi
+
           kubectl rollout status deployment/payment-service -n $(k8sNamespace) --timeout=180s
           kubectl get pods -n $(k8sNamespace) -l app.kubernetes.io/name=payment-service
 
